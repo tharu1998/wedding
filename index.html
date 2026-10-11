@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dewmi & Daham - Wedding Invitation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+Sinhala:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Video Hero Intro -->
+    <section class="hero">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="assets/video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <p class="sub-title">ආරාධනයි</p>
+                <h1 class="main-title">විවාහ ආරාධනයයි</h1>
+                <p class="couple-heading">දෙව්මි සහ දහම්</p>
+                <button class="scroll-btn" onclick="scrollToInvitation()">ආරාධනාව බලන්න</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="invitation-content" class="invitation-card">
+        
+        <header class="card-header">
+            <div class="mandala-icon">🌸</div>
+            <h2>දෙව්මි සහ දහම්</h2>
+            <p class="sinhala-quote">අපගේ ජීවිතයේ සෙනෙහෙබර වෙනස කුලුඳුල් වන විවාහ මංගල්‍යය සඳහා ඔබගේ ආශීර්වාදය ඇතුළුව සහභාගී වන ලෙස සාදරයෙන් ආරාධනා කර සිටිමු.</p>
+        </header>
+
+        <div class="couple-photo-container">
+            <img src="assets/couple.png" alt="Dewmi & Daham" class="couple-photo">
+        </div>
+
+        <section class="details-grid">
+            <div class="detail-card">
+                <div class="icon">📅</div>
+                <h3>දිනය</h3>
+                <p>2026 දෙසැම්බර් මස 15 වන දින</p>
+            </div>
+            <div class="detail-card">
+                <div class="icon">⏰</div>
+                <h3>ශුභ මුහුර්ථය</h3>
+                <p>පෙරවරු 10:10 ට</p>
+            </div>
+            <div class="detail-card">
+                <div class="icon">📍</div>
+                <h3>ස්ථානය</h3>
+                <p>Radisson Hotel, Kandy</p>
+                <a href="https://maps.google.com" target="_blank" class="map-link">Google Maps වලින් බලන්න</a>
+            </div>
+        </section>
+
+        <!-- Countdown -->
+        <section class="countdown-section">
+            <h3>මෙම දිනය සුරකින්න</h3>
+            <div class="timer-display">
+                <div class="time-box"><span id="days">00</span><label>දින</label></div>
+                <div class="time-box"><span id="hours">00</span><label>පැය</label></div>
+                <div class="time-box"><span id="minutes">00</span><label>මිනිත්තු</label></div>
+                <div class="time-box"><span id="seconds">00</span><label>තත්පර</label></div>
+            </div>
+        </section>
+
+        <!-- RSVP Form Section -->
+        <section class="rsvp-section">
+            <h2>පැමිණීම තහවුරු කිරීම (RSVP)</h2>
+            <p class="rsvp-desc">කරුණාකර ඔබගේ පැමිණීම පහත පෝරමය මගින් තහවුරු කරන්න.</p>
+
+            <form id="rsvpForm" class="rsvp-form" onsubmit="handleRSVPSubmit(event)">
+                <div class="form-group">
+                    <label for="fullName">ඔබගේ සම්පූර්ණ නම *</label>
+                    <input type="text" id="fullName" placeholder="උදා: කසුන් පෙරේරා" required>
+                    <small class="error-msg" id="nameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">දුරකථන අංකය *</label>
+                    <input type="tel" id="phone" placeholder="උදා: 0771234567" required>
+                    <small class="error-msg" id="phoneError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">විද්‍යුත් තැපෑල (Email) *</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                    <small class="error-msg" id="emailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>ඔබ පැමිණෙන්නේද? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="Yes" checked> ඔව්, මම ආදරයෙන් සහභාගී වෙමි.
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="No"> කණගාටුයි, මට සහභාගී වීමට නොහැක.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="guestCount">පැමිණෙන පුද්ගලයින් ගණන *</label>
+                    <select id="guestCount">
+                        <option value="1">1 කෙනෙක්</option>
+                        <option value="2">2 දෙනෙක්</option>
+                        <option value="3">3 දෙනෙක්</option>
+                        <option value="4">4 දෙනෙක්</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">සුභ පැතුම් / විශේෂ සටහන්</label>
+                    <textarea id="notes" rows="3" placeholder="ඔබගේ සුභ පැතුම් එක් කරන්න..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">තහවුරු කරන්න</button>
+            </form>
+            <div id="formSuccess" class="success-message" style="display:none;">
+                ✨ ස්තූතියි! ඔබගේ පැමිණීම සාර්ථකව තහවුරු විය.
+            </div>
+        </section>
+
+        <!-- Admin Access Button -->
+        <div class="admin-trigger">
+            <button onclick="toggleAdminModal()" class="admin-link-btn">🔑 Admin Portal</button>
+        </div>
+
+    </main>
+
+    <!-- Admin Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleAdminModal()">&times;</span>
+            <div id="adminLoginSection">
+                <h2>Admin Login</h2>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+                    <small class="error-msg" id="adminPassError"></small>
+                </div>
+                <button onclick="verifyAdminLogin()" class="submit-btn">Login</button>
+            </div>
+
+            <div id="adminDashboardSection" style="display:none;">
+                <h2>RSVP Dashboard</h2>
+                <div class="stats-cards">
+                    <div class="stat-card">Total RSVPs: <strong id="statTotal">0</strong></div>
+                    <div class="stat-card">Attending: <strong id="statAttending">0</strong></div>
+                    <div class="stat-card">Total Guests: <strong id="statGuests">0</strong></div>
+                </div>
+                <div class="table-responsive">
+                    <table class="rsvp-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Attending</th>
+                                <th>Guests</th>
+                                <th>Notes</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rsvpTableBody">
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="clearAllRSVPs()" class="danger-btn">Clear All Data</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
